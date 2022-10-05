@@ -10,6 +10,14 @@ and how some of these functions work.
 Legend:
 
 To Be Updated
+To Be Updated
+To Be Updated
+To Be Updated
+To Be Updated
+To Be Updated
+To Be Updated
+To Be Updated
+To Be Updated
 
 
 
