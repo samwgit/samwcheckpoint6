@@ -1,5 +1,4 @@
-Hello, in this application we are going to attempt to replicate in basic forms 
-elements from TicketMaster
+Hello, in this application I am going to attempt to replicate the functionality of Ticket Master
 
 The Backend is custom wrote by yours truly as well as the front end
 
