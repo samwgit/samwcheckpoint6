@@ -1,19 +1,23 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://i.gifer.com/DEv.gif" alt="CodeWorks Logo" class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Welcome Back
-      </h1>
-    </div>
-  </div>
+
+  <Event />
+
+
+
+
+
+
+
+
 </template>
 
 <script>
+import Event from '../components/Event.vue';
 export default {
   setup() {
-    return {}
-  }
+    return {};
+  },
+  components: { Event }
 }
 </script>
 
