@@ -1,13 +1,17 @@
 <template>
-  <div class="card" style="width: 18rem;">
+  <div class="card bg-dark" style="width: 18rem;">
+    <div class="card-header text-success">
+      Event Name Here
+    </div>
     <img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png" class="card-img-top"
       alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.
+      <h5 class="card-title">Location</h5>
+      <p class="card-text">Text About Said Event Lorem ipsum dolor sit amet among us consectetur, adipisicing elit.
+        Officiis
+        maiores non eos delectus.
       </p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn btn-success justify-content-center d-flex">View Details</a>
     </div>
   </div>
 </template>

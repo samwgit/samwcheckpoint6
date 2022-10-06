@@ -1,6 +1,18 @@
 <template>
 
-  <Event />
+
+
+  <div class="row flex-wrap justify-content-around d-flex gap-4 mt-2 mb-2">
+    <Event />
+    <Event />
+    <Event />
+    <Event />
+    <Event />
+    <Event />
+    <Event />
+    <Event />
+  </div>
+
 
 
 
