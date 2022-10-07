@@ -46,7 +46,9 @@
               <label for="event" class="form-label">Start Date:</label>
               <input type="date" class="form-control" v-model="editable.startDate" required name="startDate">
             </div>
-            <button type="submit" class="btn btn-success w-100">Submit</button>
+
+            <button type="submit" class="btn btn-success w-100" data-bs-dismiss="modal">Submit</button>
+
           </form>
         </div>
       </div>
@@ -62,36 +64,31 @@ import { AppState } from '../AppState.js';
 import { eventsService } from "../services/EventsService.js";
 import { Account } from '../models/Account.js';
 
-
-
-
-
-
-
-
-
-
+import { computed } from '@vue/reactivity';
+import { useRouter } from 'vue-router';
 
 
 
 export default {
   props: {
-    creator: {
-      type: Account,
+    event: {
+      type: Object,
       required: true
     }
   },
   setup() {
     const editable = ref({})
-
+    const router = useRouter()
     watchEffect(() => {
       editable.value = { ...AppState.post }
     })
     return {
+      // account: computed(() => AppState.account),
       editable,
       async handleSubmit() {
         try {
-          await eventsService.createEvent(editable.value)
+          const newEvent = await eventsService.createEvent(editable.value)
+          router.push({ name: 'EventDetails', params: { id: newEvent.id } })
           Pop.success('You have successfully created an Event!')
         } catch (error) {
           Pop.error(error, '[CreateEvent]')

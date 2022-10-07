@@ -1,7 +1,12 @@
-<template>
+<!-- <template>
   <h5>
-    This is indeed the Event Details Page, It is unfinished though...
+    testing 123
   </h5>
+
+  <p>
+    there is supposed to be stuff here but I don't really know how to fix the issue
+    {{ event.name }}
+  </p>
 </template>
 
 
@@ -9,10 +14,13 @@
 import { computed } from '@vue/reactivity';
 import { AppState } from '../AppState.js';
 
+
 export default {
   setup() {
     return {
-      event: computed(() => AppState.activeEvent)
+      event: computed(() => AppState.event),
+      profile: computed(() => AppState.activeProfile),
+      activeEvent: computed(() => AppState.activeEvent)
     }
   }
 }
@@ -21,4 +29,4 @@ export default {
 
 <style lang="scss" scoped>
 
-</style>
+</style> -->

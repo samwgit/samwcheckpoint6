@@ -2,8 +2,9 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="https://animalfactguide.com/wp-content/uploads/2013/01/iStock_000006372643XSmall.jpg"
-          height="45" />
+        <!-- <img alt="logo" src="https://animalfactguide.com/wp-content/uploads/2013/01/iStock_000006372643XSmall.jpg"
+          height="45" /> -->
+        <h4 class="text-success text-uppercase" title="Tower">Tower</h4>
       </div>
     </router-link>
     <button class="navbar-toggler" tyspane="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -19,7 +20,9 @@
         </li> -->
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <Login />
+      <div title="Login">
+        <Login />
+      </div>
     </div>
   </nav>
 </template>

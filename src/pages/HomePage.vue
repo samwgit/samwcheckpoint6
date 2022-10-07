@@ -9,7 +9,7 @@
       <h3 class="text-center mb-5">Welcome to Tower join our community to post!</h3>
     </div>
     <div v-if="account.id">
-      <EventForm />
+      <EventForm :event="e" />
     </div>
 
   </div>
@@ -21,13 +21,20 @@
 
 <script>
 import { computed } from '@vue/reactivity';
-import { onBeforeMount, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { AppState } from '../AppState.js';
 import Event from '../components/Event.vue';
 import EventForm from '../components/EventForm.vue';
 import { eventsService } from '../services/EventsService.js';
 import Pop from '../utils/Pop.js';
+
 export default {
+  // props: {
+  //   creator: {
+  //     type: Event,
+  //     required: true
+  //   }
+  // },
   setup() {
     async function getEvents() {
       try {
@@ -43,6 +50,7 @@ export default {
 
     return {
       events: computed(() => AppState.events),
+      // event: computed(() => AppState.event),
       account: computed(() => AppState.account)
 
     };
