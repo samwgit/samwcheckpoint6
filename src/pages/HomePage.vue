@@ -1,28 +1,51 @@
 <template>
   <div class="col-12 mb-5 mt-2">
-    <h3 class="text-center mb-5">Welcome to Tower</h3>
-    <h3 class="text-center mb-5">Welcome to Tower join our community to post!</h3>
-    <EventForm />
+    <div v-if="account.id">
+      <h3 class="text-center mb-3">Welcome to Tower <span class="text-success text-uppercase">"{{account.name}}"</span>
+      </h3>
+      <h4 class="text-center mb-4">Thanks for joining Tower!</h4>
+    </div>
+    <div v-if="!account.id">
+      <h3 class="text-center mb-5">Welcome to Tower join our community to post!</h3>
+    </div>
+    <div v-if="account.id">
+      <EventForm />
+    </div>
+
   </div>
 
   <div class="col-12 flex-wrap d-flex justify-content-around">
-    <Event />
-    <Event />
-    <Event />
-    <Event />
-    <Event />
-    <Event />
-    <Event />
-    <Event />
+    <Event v-for="e in events" :key="e.id" :event="e" />
   </div>
 </template>
 
 <script>
+import { computed } from '@vue/reactivity';
+import { onBeforeMount, onMounted } from 'vue';
+import { AppState } from '../AppState.js';
 import Event from '../components/Event.vue';
 import EventForm from '../components/EventForm.vue';
+import { eventsService } from '../services/EventsService.js';
+import Pop from '../utils/Pop.js';
 export default {
   setup() {
-    return {};
+    async function getEvents() {
+      try {
+        await eventsService.getEvents()
+      } catch (error) {
+        Pop.error("[getEvents]", error)
+      }
+    }
+
+    onMounted(() => {
+      getEvents()
+    })
+
+    return {
+      events: computed(() => AppState.events),
+      account: computed(() => AppState.account)
+
+    };
   },
   components: { Event, EventForm }
 }

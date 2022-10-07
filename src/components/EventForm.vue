@@ -18,30 +18,32 @@
           <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="card-bg p-2 rounded-2 m-2">
+          <form class="card-bg p-2 rounded-2 m-2" @submit.prevent="handleSubmit">
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Event Name:</label>
-              <input type="word" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <label for="eventName" class="form-label">Event Name:</label>
+              <input type="word" class="form-control" aria-describedby="Event Name" v-model="editable.name" required
+                name="name">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Location:</label>
-              <input type="word" class="form-control" id="exampleInputPassword1">
+              <label for="eventLocation" class="form-label">Location:</label>
+              <input type="word" class="form-control" v-model="editable.location" required name="location">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Description:</label>
-              <input type="word" class="form-control" id="exampleInputPassword1" maxlength="250">
+              <label for="event" class="form-label">Description:</label>
+              <input type="word" class="form-control" maxlength="250" v-model="editable.description" required
+                name="description">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Image:</label>
-              <input type="url" class="form-control" id="exampleInputPassword1">
+              <label for="event" class="form-label">Image:</label>
+              <input type="url" class="form-control" v-model="editable.coverImg" required name="eventImg">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Capacity:</label>
-              <input type="number" class="form-control" id="exampleInputPassword1">
+              <label for="event" class="form-label">Capacity:</label>
+              <input type="number" class="form-control" v-model="editable.capacity" required name="capacity">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Start Date:</label>
-              <input type="date" class="form-control" id="exampleInputPassword1">
+              <label for="event" class="form-label">Start Date:</label>
+              <input type="date" class="form-control" v-model="editable.startDate" required name="startDate">
             </div>
             <button type="submit" class="btn btn-success w-100">Submit</button>
           </form>
@@ -53,9 +55,36 @@
 
 
 <script>
+import { ref, watchEffect } from 'vue';
+import Pop from '../utils/Pop.js';
+import { AppState } from '../AppState.js';
+import { eventsService } from "../services/EventsService.js";
+
+
 export default {
   setup() {
-    return {}
+    const editable = ref({})
+
+    watchEffect(() => {
+      editable.value = { ...AppState.post }
+    })
+
+
+
+
+
+
+    return {
+      editable,
+      async handleSubmit() {
+        try {
+          await eventsService.createEvent(editable.value)
+          Pop.success('You have successfully created an Event!')
+        } catch (error) {
+          Pop.error(error, '[CreateEvent]')
+        }
+      }
+    }
   }
 }
 </script>

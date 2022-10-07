@@ -1,14 +1,25 @@
-const { AppState } = require("../AppState.js")
-const { api } = require("./AxiosService.js")
+import { AppState } from '../AppState.js';
+import { Event } from '../models/Event.js';
+import { api } from "./AxiosService.js";
 
 class EventsService {
 
   async getEvents(eventData) {
-    const res = await api.get('/api/events', eventData)
-    const event = new Event(res.data)
-    AppState.events = [...AppState.events, event]
-    AppState.activeEvent = event
+    AppState.events = []
+    const res = await api.get('api/events', eventData)
+    AppState.events = res.data.map(e => new Event(e))
+  }
+
+  async deleteEvent(id) {
+    const res = await api.delete(`api/events/${id}`)
+    AppState.events.splice(AppState.events.findIndex(e => e.id == id), 1)
+  }
+
+
+  async createEvent(formData) {
+    const res = await api.post('api/events', formData)
+    AppState.post = new Event(res.data)
   }
 }
 
-const eventsService = new EventsService()
+export const eventsService = new EventsService()
