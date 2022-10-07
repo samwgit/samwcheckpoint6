@@ -1,10 +1,11 @@
 <template>
+  <div class="col-12 mb-5 mt-2">
+    <h3 class="text-center mb-5">Welcome to Tower</h3>
+    <h3 class="text-center mb-5">Welcome to Tower join our community to post!</h3>
+    <EventForm />
+  </div>
 
-
-
-  <div class="row flex-wrap justify-content-around d-flex gap-4 mt-2 mb-2">
-    <Event />
-    <Event />
+  <div class="col-12 flex-wrap d-flex justify-content-around">
     <Event />
     <Event />
     <Event />
@@ -14,24 +15,16 @@
     <Event />
     <Event />
   </div>
-
-
-
-
-
-
-
-
-
 </template>
 
 <script>
 import Event from '../components/Event.vue';
+import EventForm from '../components/EventForm.vue';
 export default {
   setup() {
     return {};
   },
-  components: { Event }
+  components: { Event, EventForm }
 }
 </script>
 

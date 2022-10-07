@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-dark" style="width: 18rem;">
+  <div class="card card-bg m-3" style="width: 18rem;">
     <div class="card-header text-success">
       Event Name Here
     </div>
@@ -18,7 +18,12 @@
 
 
 <script>
+import { Event } from '../models/Event.js'
+
 export default {
+  props: {
+    event: { type: Event, required: true }
+  },
   setup() {
     return {}
   }
@@ -27,5 +32,7 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.card-bg {
+  background-color: #22324d;
+}
 </style>
