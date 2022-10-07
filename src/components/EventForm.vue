@@ -18,6 +18,7 @@
           <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+
           <form class="card-bg p-2 rounded-2 m-2" @submit.prevent="handleSubmit">
             <div class="mb-3">
               <label for="eventName" class="form-label">Event Name:</label>
@@ -59,21 +60,33 @@ import { ref, watchEffect } from 'vue';
 import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 import { eventsService } from "../services/EventsService.js";
+import { Account } from '../models/Account.js';
+
+
+
+
+
+
+
+
+
+
+
 
 
 export default {
+  props: {
+    creator: {
+      type: Account,
+      required: true
+    }
+  },
   setup() {
     const editable = ref({})
 
     watchEffect(() => {
       editable.value = { ...AppState.post }
     })
-
-
-
-
-
-
     return {
       editable,
       async handleSubmit() {
