@@ -2,13 +2,13 @@
   <h1 class="text-center text-success">Event Details</h1>
   <div class="container-fluid d-flex justify-content-center">
     <div class="row fs-3 card-bg col-10 rounded-3 justify-content-center ms-1 me-1">
+      <img class="mb-3 mt-3 rounded-5" :src="event.coverImg" alt="coverImg" style="height: 300px; width: 300px"
+        :title="event.coverImg">
       <p>Event Name: <span class="text-success">{{event.name}}</span></p>
       <p>Event Location: <span class="text-success">{{event.location}}</span></p>
       <p>Event Capacity: <span class="text-success">{{event.capacity}}</span></p>
       <p>Event Start Date: <span class="text-success">{{event.startDate}}</span></p>
       <p class="fs-5">Event Description: <span class="text-success">{{event.description}}</span></p>
-      <img class="mb-3" :src="event.coverImg" alt="coverImg" style="height: 300px; width: 300px"
-        :title="event.coverImg">
     </div>
   </div>
   <div class="container-fluid mt-3">

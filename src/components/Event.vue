@@ -7,7 +7,7 @@
 
     </div>
 
-    <img :src="event.coverImg" class="card-img-top" alt="coverImg" :title="event.coverImg">
+    <img :src="event.coverImg" class="card-img-top rounded-4" alt="coverImg" :title="event.coverImg">
     <div class="card-body">
       <h5 class="card-title">{{event.location}}</h5>
       <p class="card-text">{{event.description}}
